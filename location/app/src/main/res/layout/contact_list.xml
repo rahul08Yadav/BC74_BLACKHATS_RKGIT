@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/t"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#41ba7a"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="50dp"
+        android:text="Emergency Contacts"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alpha="0.60"
+        android:src="@drawable/group" />
+
+    <ListView
+        android:layout_below="@+id/t"
+        android:id="@+id/listViewContacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp" />
+
+
+    <LinearLayout
+        android:id="@+id/manual_add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/detail_white_design"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:weightSum="3">
+
+        <EditText
+            android:id="@+id/contactName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:hint="Name" />
+
+        <EditText
+            android:id="@+id/contactNumber"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:hint="Phone Number" />
+
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Save"
+            android:textColor="#756be8"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/from_contact_layout"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/detail_white_design"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/Ctext"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="How will you add this person?"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/addContacts"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_format2"
+            android:text="Select From Contacts"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/add_contact_manually"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Add Manually"
+            android:textColor="#756be8"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/from_contact_layout"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/ic_cancel_black"
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/addMembers"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/button_format2"
+        android:text="Add Contacts" />
+</RelativeLayout>

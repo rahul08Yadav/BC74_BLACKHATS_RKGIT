@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="DashBoard"/>
+        <item
+            android:icon="@drawable/ic_person"
+            android:id="@+id/emergency_contact"
+            android:title="Profile" />
+
+        <item android:icon="@drawable/ic_group_black_24dp"
+            android:id="@+id/profile"
+            android:title="Group Details"/>
+        <item
+            android:id="@+id/geofence"
+            android:icon="@drawable/maps"
+            android:title="@string/maps" />
+
+        <item
+            android:id="@+id/video_self_defence"
+            android:icon="@drawable/ic_youtube"
+            android:title="Videos for Self Defense" />
+
+        <item
+            android:icon="@drawable/ic_guide"
+            android:id="@+id/tips_for_citizen"
+            android:title="Tips for Citizens" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="About the App" />
+
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/logout" />
+        </menu>
+    </item>
+
+</menu>

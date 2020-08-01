@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Crime Related Alert</string>
+    <string name="hello_world">Your location</string>
+    <string name="send_location">SOS</string>
+    <string name="email">Email id</string>
+    <string name="Password">Password</string>
+    <string name="signin"><b><u>Sign in</u></b></string>
+    <string name="registration">Do not have a account?</string>
+    <string name="goback"><b><u>Register</u></b></string>
+    <string name="header">Welcome Back</string>
+    <string name="createregister">Create new Account</string>
+    <string name="register">Register</string>
+    <string name="alreadyregistered">Already Registered!!</string>
+    <string name="login">Sign In to your account</string>
+    <string name="logout">Logout</string>
+    <string name="crime_related_alerts">Crime Related Alerts</string>
+    <string name="nmit">From\n Nmit Coders</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyCOb61zCrgfPLN-CXg7ZRMuy6ZiOyFMbHg
+    </string>
+    <string name="google_maps_ke">AIzaSyDtzTXxFe69U0uJV96nrO3JoDr-OSthQEA</string>
+
+
+    <string name="maps">Maps</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

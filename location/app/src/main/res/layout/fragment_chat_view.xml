@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/whatsappwallpaper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/g"
+        android:paddingHorizontal="60dp"
+        android:hint="GroupId"
+        android:gravity="bottom"
+        android:textSize="30sp"
+        android:background="#075E54"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+        <ListView
+            android:transcriptMode="alwaysScroll"
+            android:stackFromBottom="true"
+            android:layout_below="@+id/g"
+            android:id="@+id/chatRecycle"
+            android:layout_above="@+id/l"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/l"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20dp"
+        android:weightSum="10"
+        android:background="@drawable/detail_white_design"
+        android:layout_alignParentBottom="true"
+        android:layout_height="60dp">
+
+        <EditText
+            android:id="@+id/sendText"
+            android:layout_weight="9.5"
+            android:padding="10dp"
+            android:hint="Text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/sendchat"
+            android:background="@drawable/chatsent"
+            android:layout_weight="0.5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

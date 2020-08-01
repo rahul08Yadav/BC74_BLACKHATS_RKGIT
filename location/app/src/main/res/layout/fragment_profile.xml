@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#756be8">
+
+
+    <TextView
+        android:id="@+id/joiningText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:text="Joining a Circle? Enter your\n invite code"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+
+        android:id="@+id/groupId"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/joiningText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:hint="Enter Group Id"
+        android:padding="10dp"
+        android:textSize="25sp" />
+
+    <TextView
+
+        android:textAllCaps="true"
+        android:id="@+id/groupIdreplace"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@id/joiningText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:hint="Your Group Id"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/preText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/groupId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Tip: You may need to ask the circle creator\n for the code"
+        android:textColor="@color/white"
+
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/preTextreplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/groupId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:visibility="invisible"
+        android:text="Tip: You are already in a group leave group to\n join/create new group"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+
+    <ProgressBar
+        android:id="@+id/profileProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/groupId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/joinGroup"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/preTextreplace"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_format"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="20sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffcfbf"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/noText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Don't have a code ?"
+            android:textColor="#756BE8"
+            android:textSize="25sp"
+
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/noTextreplace"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:text="Leave Group to join/create new"
+            android:textColor="#756BE8"
+            android:visibility="invisible"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/createCode"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noText"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_format2"
+            android:text="Create a new Code"
+            android:textAllCaps="false"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/leave_grp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noText"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_format2"
+            android:text="Leave Group"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

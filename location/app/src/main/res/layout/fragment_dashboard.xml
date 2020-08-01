@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/send_alerts"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/sos"
+
+        android:textSize="20sp" />
+
+
+    <ImageView
+        android:id="@+id/right_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="80dp"
+        android:visibility="invisible"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/wifi" />
+    <ImageView
+        android:id="@+id/left_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="180"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/wifi" />
+
+    <ProgressBar
+        android:id="@+id/dashProgress"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/send_alerts"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_view1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/text_view2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:id="@+id/text_view3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+
+            android:id="@+id/text_view4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_view5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:columnCount="3"
+        android:padding="10dp"
+        android:rowCount="2">
+
+        <Button
+            android:id="@+id/record_video"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableRight="@drawable/video"
+            android:text="Send Video"
+            android:textAllCaps="false" />
+
+
+        <Button
+            android:id="@+id/fetch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableRight="@drawable/patrol"
+            android:text="Near By Police"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/grp_chat"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableRight="@drawable/grpchat"
+            android:text="Group Chat"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/whatsAppBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableRight="@drawable/help"
+            android:text="Emer- gency Contact"
+            android:textSize="11sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/callBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableRight="@drawable/phone"
+            android:text="Call Parent"
+            android:textAllCaps="false"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/SendMessageBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableRight="@drawable/send"
+            android:text="Send Message"
+            android:textAllCaps="false"
+            android:textSize="10sp" />
+
+
+    </GridLayout>
+
+</RelativeLayout>
