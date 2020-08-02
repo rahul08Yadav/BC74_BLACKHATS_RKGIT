@@ -30,4 +30,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="intro">With many beneficial Features we bring to you a application which helps you connect to your family and loved ones and reach out to them when in danger.</string>
+
 </resources>

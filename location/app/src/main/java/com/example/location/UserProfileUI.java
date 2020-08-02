@@ -39,7 +39,7 @@ public class UserProfileUI extends Fragment {
         name.setText(userName);
         email.setText(userID);
         gpId.setText(groupId);
-        pEmail.setText(parentEmail);
+        pEmail.setText(userID);
         Pphone.setText(parentPhone);
         Log.d("TAG","Image URl is" + imgURl);
         Picasso.get().load(imgURl).into(userImage);

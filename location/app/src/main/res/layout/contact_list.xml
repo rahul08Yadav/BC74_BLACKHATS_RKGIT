@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/bk"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -8,7 +9,7 @@
         android:id="@+id/t"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#41ba7a"
+        android:background=" #FFC300 "
         android:gravity="center_vertical"
         android:paddingHorizontal="50dp"
         android:text="Emergency Contacts"
@@ -23,6 +24,8 @@
         android:src="@drawable/group" />
 
     <ListView
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_below="@+id/t"
         android:id="@+id/listViewContacts"
         android:layout_width="match_parent"
@@ -135,6 +138,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/button_format2"
+        android:background="@drawable/button_formatting"
         android:text="Add Contacts" />
 </RelativeLayout>

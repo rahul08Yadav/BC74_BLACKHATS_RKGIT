@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,21 +22,36 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    TextView mloginText;
+    //TextView mloginText;
     EditText mEmail, mPassword;
     Button mSignin;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    TextView ChangingText;
+    RelativeLayout changing_img;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.login_page);
+        ChangingText = findViewById(R.id.loginauth);
+        changing_img = findViewById(R.id.changing_img);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentDateTime = dateFormat.format(new Date());
+        String ctime = currentDateTime.substring(11,13);
+        if(Integer.parseInt(ctime) >= 12){
+            ChangingText.setText("Good Evening");
+            changing_img.setBackgroundResource(R.drawable.good_night_img);
+
+        }
 
 
-        mloginText = findViewById(R.id.registertext);
+       // mloginText = findViewById(R.id.registertext);
         mSignin = findViewById(R.id.signin);
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
@@ -45,7 +61,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
 
         mSignin.setOnClickListener(this);
-        mloginText.setOnClickListener(this);
+       // mloginText.setOnClickListener(this);
 
         if (fAuth.getCurrentUser() != null) {
             Intent i = new Intent(Login.this, MainActivity.class);
@@ -54,15 +70,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
-        startActivity(intent);
-        finish();
-        System.exit(0);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent = new Intent(Intent.ACTION_MAIN);
+//        intent.addCategory(Intent.CATEGORY_HOME);
+//        intent.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
+//        startActivity(intent);
+//        finish();
+//        System.exit(0);
+//    }
 
     @Override
     public void onClick(View view) {
@@ -105,10 +121,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 });
 
                 break;
-            case R.id.registertext:
-                Intent i = new Intent(Login.this, Registration.class);
-                startActivity(i);
-                break;
+//            case R.id.registertext:
+//                Intent i = new Intent(Login.this, Registration.class);
+//                startActivity(i);
+//                break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+       Intent i = new Intent(Login.this,IntroScreen.class);
+       startActivity(i);
+
+    }
+
 }

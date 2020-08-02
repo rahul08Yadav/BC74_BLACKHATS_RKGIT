@@ -34,6 +34,7 @@ import java.util.Random;
 public class CreateCodeFragment extends Fragment {
     TextView codeText,doneSharing;
     Button mShareCode,mJoinBtn;
+    FirebaseAuth fAuth;
     FusedLocationProviderClient fusedLocationProviderClient;
     FirebaseAuth firebaseAuth;
     String userId;
@@ -57,6 +58,7 @@ public class CreateCodeFragment extends Fragment {
         userId = firebaseAuth.getCurrentUser().getEmail();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         mShareCode.setEnabled(false);
+        ((MainActivity) getActivity()).exit.setVisibility(View.INVISIBLE);
 
         mJoinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +162,9 @@ public void sendingFusedLocationGen(){
             Log.d("TAG", "onFailure: " + e.toString());
         }
     });
+    Map<String,Object> code1 = new HashMap<>();
+    code1.put( "Text" , " ");
+    db.collection("chats").document(gcode1).collection("users").document(userId).set(code1);
 
     Map<String,Object> code = new HashMap<>();
     code.put( "Text" , "Your Important Alerts");

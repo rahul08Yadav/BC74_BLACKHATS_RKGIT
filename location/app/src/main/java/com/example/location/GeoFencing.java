@@ -10,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Interpolator;
 import android.graphics.Point;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -73,6 +75,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Stack;
 
 public class GeoFencing extends AppCompatActivity implements OnMapReadyCallback{
@@ -178,6 +181,25 @@ public class GeoFencing extends AppCompatActivity implements OnMapReadyCallback{
 //            }
 //        });
 
+        Circle circle = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(13.1139757, 77.6251843))
+                .radius(1000)
+                .strokeColor(Color.TRANSPARENT)
+                .fillColor(0x330000ff));
+
+        Circle circle2 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(13.134789, 77.637311))
+                .radius(1000)
+                .strokeColor(Color.TRANSPARENT)
+                .fillColor(0x220000FF));
+
+        Circle circle1 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(13.112933, 77.607700))
+                .radius(1000)
+                .strokeColor(Color.TRANSPARENT)
+                .fillColor(0x440000ff));
+
+
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -210,7 +232,7 @@ public class GeoFencing extends AppCompatActivity implements OnMapReadyCallback{
                             Log.d("LOCATION",Latitude+"\n hi"+Longitude);
                             LatLng pointer = new LatLng( Latitude, Longitude);
                             mOrigin = pointer;
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pointer,18.0f));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pointer,13.0f));
                             mMap.setMyLocationEnabled(true);
                             Toast.makeText(GeoFencing.this, "Latitude:"+Latitude+"\n Longitude"+Longitude, Toast.LENGTH_LONG).show();
                         }
@@ -306,10 +328,19 @@ public class GeoFencing extends AppCompatActivity implements OnMapReadyCallback{
                                                 Log.d("TAG", "Current data1: " + snapshot.get("latitude"));
                                                 String latti1 = String.valueOf(snapshot.get("latitude"));
                                                 String longi1 = String.valueOf(snapshot.get("longitude"));
+                                                Geocoder geocoder = new Geocoder(GeoFencing.this, Locale.getDefault());
+                                            List<Address> addressList = null;
+                                            try {
+                                                addressList = geocoder.getFromLocation(Double.parseDouble(latti1),Double.parseDouble(longi1),1);
+                                            } catch (IOException ex) {
+                                                ex.printStackTrace();
+                                            }
+
+                                                String asdf = String.valueOf(addressList.get(0).getAddressLine(0));
                                                 LatLng sydney = new LatLng(Double.parseDouble(latti1), Double.parseDouble(longi1));
-                                                marker = mMap.addMarker(new MarkerOptions().position(sydney).title(adapterView.getItemAtPosition(a).toString()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                                                marker = mMap.addMarker(new MarkerOptions().position(sydney).title(asdf).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)).snippet(adapterView.getItemAtPosition(a).toString()));
                                                 marker.setPosition(sydney);
-                                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latti1), Double.parseDouble(longi1)), 22.0f));
+                                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(latti1), Double.parseDouble(longi1)), 15.0f));
 
                                                // animateMarker(marker,sydney,true);
 

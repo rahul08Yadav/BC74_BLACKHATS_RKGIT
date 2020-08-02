@@ -45,6 +45,10 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.location.MainActivity.groupId;
+import static com.example.location.MainActivity.userID;
+import static com.example.location.MainActivity.userName;
+
 
 public class ProfileFragment extends Fragment {
    private Button joinGrp,createCode,leaveGrpBtn;
@@ -83,6 +87,7 @@ public class ProfileFragment extends Fragment {
         noText = view.findViewById(R.id.noText);
         userID = fAuth.getCurrentUser().getEmail();
 
+        ((MainActivity) getActivity()).exit.setVisibility(View.INVISIBLE);
         if(ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -232,6 +237,10 @@ public class ProfileFragment extends Fragment {
         user.put("latitude",String.valueOf(Latitude));
         user.put("longitude",String.valueOf(Longitude));
         Log.d("LOCATION",String.valueOf(Latitude) + '+' + Longitude);
+
+        Map<String,Object> code = new HashMap<>();
+        code.put( "Text" , " ");
+        db.collection("chats").document(gcode).collection("users").document(userID).set(code);
 
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

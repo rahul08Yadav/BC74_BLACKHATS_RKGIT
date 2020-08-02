@@ -43,6 +43,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     VideoView videoView;
     FirebaseFirestore db;
     Double latitude,longitude;
-    Button mSendAlerts,mSendMail,mRecordVideo;
+    Button mSendAlerts,mSendMail,mRecordVideo,exit;
     Timer timer;
     FirebaseAuth fAuth;
     public Button mdrawerBtn;
@@ -135,6 +136,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         userID = fAuth.getCurrentUser().getEmail();
         mStorage = FirebaseStorage.getInstance().getReference();
 
+        exit = findViewById(R.id.exit);
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new DashboardFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
 
 

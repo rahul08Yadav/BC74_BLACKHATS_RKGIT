@@ -9,11 +9,13 @@ import android.content.Intent;
 
 import android.content.pm.PackageManager;
 
+import android.graphics.Bitmap;
 import android.location.Location;
 
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 
@@ -57,6 +59,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,16 +79,18 @@ import static com.example.location.MainActivity.userName;
 
 
 public class DashboardFragment extends Fragment {
-    Button mSendAlerts, mSendMail, mRecordVideo, mwhatsapp, callBtn, msgBtn, grpChat;
-    TextView textView1, textView2, textView3, textView4, textView5;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private Button mSendAlerts, mSendMail, mRecordVideo, mwhatsapp, callBtn, msgBtn, grpChat, policeMap;
+    // TextView textView1, textView2, textView3, textView4, textView5;
     FirebaseAuth fAuth;
-
+    public static byte[] byte_data;
     FusedLocationProviderClient fusedLocationProviderClient;
     FirebaseFirestore db;
     String userID, ParentsEmail, phoneNumber;
     ProgressBar mProgress;
     ImageView rightWifi, leftWifi;
     public String UserName;
+    String img_url;
     private String  Latitude, Longitude;
     static final int REQUEST_VIDEO_CAPTURE = 1;
     Timer timer;
@@ -101,16 +107,16 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-
+mStorageRef = FirebaseStorage.getInstance().getReference();
 
         db = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         mSendAlerts = view.findViewById(R.id.send_alerts);
-        textView1 = view.findViewById(R.id.text_view1);
-        textView2 = view.findViewById(R.id.text_view2);
-        textView3 = view.findViewById(R.id.text_view3);
-        textView4 = view.findViewById(R.id.text_view4);
-        textView5 = view.findViewById(R.id.text_view5);
+//        textView1 = view.findViewById(R.id.text_view1);
+//        textView2 = view.findViewById(R.id.text_view2);
+//        textView3 = view.findViewById(R.id.text_view3);
+//        textView4 = view.findViewById(R.id.text_view4);
+//        textView5 = view.findViewById(R.id.text_view5);
         mSendMail = view.findViewById(R.id.fetch);
         mwhatsapp = view.findViewById(R.id.whatsAppBtn);
         mRecordVideo = view.findViewById(R.id.record_video);
@@ -120,9 +126,10 @@ public class DashboardFragment extends Fragment {
         grpChat = view.findViewById(R.id.grp_chat);
         rightWifi = view.findViewById(R.id.right_wifi);
         leftWifi = view.findViewById(R.id.left_wifi);
+        policeMap = view.findViewById(R.id.fetch);
 
         ((MainActivity) getActivity()).mdrawerBtn.setVisibility(View.VISIBLE);
-
+        ((MainActivity) getActivity()).exit.setVisibility(View.VISIBLE);
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
@@ -149,6 +156,14 @@ public class DashboardFragment extends Fragment {
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
+            }
+        });
+
+        policeMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent police = new Intent(getActivity(),PoliceLocation.class);
+                startActivity(police);
             }
         });
 
@@ -294,6 +309,21 @@ public class DashboardFragment extends Fragment {
                     leftWifi.setVisibility(View.INVISIBLE);
                     rightWifi.clearAnimation();
                     leftWifi.clearAnimation();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String currentDateTime = dateFormat.format(new Date());
+                    String cdate = currentDateTime.substring(0,11);
+                    String ctime = currentDateTime.substring(11,19);
+
+                    Log.d("ChatsFragment", "Current Timestamp: " + currentDateTime.substring(11,19) + " "+currentDateTime.substring(0,11));
+                    String putText = userName + " has stopped his journey at " + ctime + " on " + cdate + " you can view " + userName +
+                            " last location in the maps";
+
+                    Map<String,Object> code = new HashMap<>();
+                    String key =  cdate + " " + userName + " " + ctime;
+                    code.put( key , putText);
+                    db.collection("chats").document(groupId).collection("users").document("ImportantAlerts").set(code, SetOptions.merge());
+
+
                     Log.d("TAG", "timer:" + timer);
                     stopLocationServices();
                     return;
@@ -377,45 +407,72 @@ public class DashboardFragment extends Fragment {
         return view;
     }
 
-    private void dispatchTakeVideoIntent() {
-        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        if (takeVideoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
-        }
+//    private void dispatchTakeVideoIntent() {
+//        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+//        if (takeVideoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+//            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+//        }
+
+        private void dispatchTakeVideoIntent() {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, REQUEST_VIDEO_CAPTURE);
+            }
+
+
     }
+
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            Uri videoUri = intent.getData();
-            // Toast.makeText(getContext(),"uri"+ videoUri , Toast.LENGTH_LONG).show();
-            Log.d(TAG, "uri " + videoUri);
-            mStorageRef = FirebaseStorage.getInstance().getReference();
-            StorageReference filepath = mStorageRef.child("Videos").child(userID);
-            mProgress.setVisibility(View.VISIBLE);
-            filepath.putFile(videoUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    Toast.makeText(getContext(), "Video uploaded", Toast.LENGTH_LONG).show();
-                    mProgress.setVisibility(View.INVISIBLE);
-                }
-
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), "Video Could'nt be Uploaded", Toast.LENGTH_LONG).show();
-                    mProgress.setVisibility(View.INVISIBLE);
-                }
-            });
-
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            Uri content_uri = data.getData();
+            Log.d("Photo", "photo" + content_uri);
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte_data = baos.toByteArray();
+            uploadProfileImageToFirebase(userID,byte_data);
 
         }
-
     }
-//
+    private void uploadProfileImageToFirebase(String Email,byte[] content_data) {
+        mProgress.setVisibility(View.VISIBLE);
+        Toast.makeText(getContext(), "uri" + content_data
+                , Toast.LENGTH_LONG).show();
+        StorageReference imgRef = mStorageRef.child("Videos").child(Email);
+        imgRef.putBytes(content_data)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+                        Toast.makeText(getContext(), "Upload success"
+                                , Toast.LENGTH_LONG).show();
+                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uri.isComplete()) ;
+                        Uri url = uri.getResult();
+                        img_url = url.toString();
+                        Map<String,Object> data = new HashMap<>();
+                        data.put("image_url", img_url);
+
+                        db.collection("users").document(userID).set(data, SetOptions.merge());
+
+
+                      mProgress.setVisibility(View.INVISIBLE);// Get a URL to the uploaded content
+                        Log.d("URL", "Download URL is: " + url);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                        // ...
+                        Toast.makeText(getContext(), "Upload Unsuccessful"
+                                , Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -535,14 +592,14 @@ public class DashboardFragment extends Fragment {
                     final String text = "Alert!! your family member " + UserName + " has sent an alert.\n"
                             + " his location is:-\n" + URLW;
 
-                    String mail = ParentsEmail;
-                    String message = "Alert!! your family member " + UserName + " is in Danger and has sent you a request to help.\n"
-                            + UserName + " has sent the location for you:-\n" + URLW + "\n" + "Please login to our website for more information and help " + UserName;
-                    String subject = UserName + " is asking for Help!!";
-                    JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), mail, subject, message);
-                    javaMailAPI.execute();
-
-                    Log.d("URL", URLW);
+//                    String mail = ParentsEmail;
+//                    String message = "Alert!! your family member " + UserName + " is in Danger and has sent you a request to help.\n"
+//                            + UserName + " has sent the location for you:-\n" + URLW + "\n" + "Please login to our website for more information and help " + UserName;
+//                    String subject = UserName + " is asking for Help!!";
+//                    JavaMailAPI javaMailAPI = new JavaMailAPI(getContext(), mail, subject, message);
+//                    javaMailAPI.execute();
+//
+//                    Log.d("URL", URLW);
 
                     for (int i = 0; i < allPhoneNumber.size(); i++) {
 
@@ -596,4 +653,7 @@ public class DashboardFragment extends Fragment {
             }
         });
     }
+
+
+
 }

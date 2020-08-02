@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/citty"
     android:layout_height="match_parent">
 
 
@@ -91,13 +92,15 @@
         android:layout_marginTop="380dp" />
 
     <GridLayout
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="340dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
-        android:columnCount="3"
+        android:columnCount="2"
         android:padding="10dp"
-        android:rowCount="2">
+        android:rowCount="3">
 
         <Button
             android:id="@+id/record_video"
@@ -108,7 +111,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"
             android:drawableRight="@drawable/video"
-            android:text="Send Video"
+            android:text="Send Photos"
             android:textAllCaps="false" />
 
 
@@ -119,9 +122,10 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
+            android:textSize="18sp"
             android:background="@drawable/custom_button"
             android:drawableRight="@drawable/patrol"
-            android:text="Near By Police"
+            android:text="Near By\n Police"
             android:textAllCaps="false" />
 
         <Button
@@ -134,6 +138,7 @@
             android:background="@drawable/custom_button"
             android:drawableRight="@drawable/grpchat"
             android:text="Group Chat"
+            android:textSize="18sp"
             android:textAllCaps="false" />
 
         <Button
@@ -145,8 +150,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"
             android:drawableRight="@drawable/help"
-            android:text="Emer- gency Contact"
-            android:textSize="11sp"
+            android:text="Emergency\n Contacts"
+            android:textSize="16sp"
             android:textAllCaps="false" />
 
         <Button
@@ -158,9 +163,9 @@
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"
             android:drawableRight="@drawable/phone"
-            android:text="Call Parent"
+            android:text="Call nearest\nContact"
             android:textAllCaps="false"
-            android:textSize="12sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/SendMessageBtn"
@@ -173,7 +178,7 @@
             android:drawableRight="@drawable/send"
             android:text="Send Message"
             android:textAllCaps="false"
-            android:textSize="10sp" />
+            android:textSize="18sp" />
 
 
     </GridLayout>

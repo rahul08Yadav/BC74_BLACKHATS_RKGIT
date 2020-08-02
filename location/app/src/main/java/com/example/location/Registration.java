@@ -66,17 +66,17 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         pEmail = findViewById(R.id.parentsEmail);
         userName = findViewById(R.id.userName);
         mRegistrationBtn = findViewById(R.id.registerbutton);
-        mLoginBtn = findViewById(R.id.regToLog);
+       regText = findViewById(R.id.regText);
         progressBar = findViewById(R.id.authProgress);
         fAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         img = findViewById(R.id.userImg);
-        regText = findViewById(R.id.regText);
+
         storageReference = FirebaseStorage.getInstance().getReference();
 
         muserPicBtn = findViewById(R.id.userPicUpload);
         mRegistrationBtn.setOnClickListener(Registration.this);
-        mLoginBtn.setOnClickListener(Registration.this);
+
 
         muserPicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,11 +190,11 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 break;
 
 
-            case R.id.regToLog:
-                Toast.makeText(getApplicationContext(), "sign in pressed", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(Registration.this, Login.class);
-                startActivity(i);
-                break;
+//            case R.id.regToLog:
+//                Toast.makeText(getApplicationContext(), "sign in pressed", Toast.LENGTH_SHORT).show();
+//                Intent i = new Intent(Registration.this, Login.class);
+//                startActivity(i);
+//                break;
 
 
         }
@@ -221,8 +221,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                       db.collection("users").document(userID).set(data, SetOptions.merge());
 
 
-                        Toast.makeText(Registration.this, "Upload Success, download URL " +
-                                url.toString(), Toast.LENGTH_LONG).show();// Get a URL to the uploaded content
+
                         Log.d("URL", "Download URL is: " + url);
                     }
                 })
@@ -259,7 +258,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             byte_data = baos.toByteArray();
-            regText.setText("Image Uploaded");
+           regText.setText("Image Uploaded");
             img.setImageBitmap(image);
 
         }
