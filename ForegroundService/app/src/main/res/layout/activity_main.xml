@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/pbk"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        android:background="@drawable/custom_btn1"
+        android:drawableRight="@drawable/logout"
+        android:padding="5dp"
+        android:text="Logout"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/carImage"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginEnd="80dp"
+        android:src="@drawable/patrol" />
+
+
+    <EditText
+        android:id="@+id/groupid"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/coustom_edit_text"
+        android:drawableStart="@drawable/custom_id"
+        android:drawablePadding="12dp"
+        android:hint="GroupId"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+    <EditText
+
+        android:id="@+id/email"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/groupid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/coustom_edit_text"
+        android:drawableStart="@drawable/custom_email"
+        android:drawablePadding="12dp"
+        android:hint="Email"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
+
+
+    <Button
+        android:id="@+id/buttonStartService"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carImage"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_btn1"
+        android:hint="GroupId"
+        android:padding="16dp"
+        android:text="Start Service"
+        android:textColor="#000000"
+
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonStopService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carImage"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/custom_btn1"
+        android:padding="16dp"
+        android:text="Stop Service"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/checkLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/coustom_button"
+        android:padding="8dp"
+        android:text="Check location"
+        android:textStyle="bold" />
+</RelativeLayout>
