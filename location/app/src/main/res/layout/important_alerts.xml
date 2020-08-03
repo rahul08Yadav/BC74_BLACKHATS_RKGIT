@@ -10,7 +10,7 @@
         android:hint="GroupId"
         android:gravity="bottom"
         android:textSize="30sp"
-        android:background="#075E54"
+        android:background="#34b7f1"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
 

@@ -5,7 +5,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3A3A3A"
+    android:background="#ffff"
     tools:context=".MainActivity">
 
     <com.google.android.material.navigation.NavigationView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#bfbfbf"
+        android:background="#ffffff"
         app:headerLayout="@layout/header"
         app:itemIconTint="#000000"
         app:itemTextColor="#000000"
@@ -36,11 +36,11 @@
             android:layout_height="48dp"
             android:id="@+id/navigationDrawer"/>
         <Button
-            android:layout_alignParentRight="true"
+           android:layout_alignParentRight="true"
             android:layout_margin="8dp"
             android:background="@drawable/ic_arrow_back"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:id="@+id/exit"/>
 
 

@@ -96,7 +96,7 @@ public class MessageFragment extends Fragment {
                         for (Map.Entry<String, Object> set : document.getData().entrySet()) {
                             String name = set.getKey();
                             String phone = set.getValue().toString();
-                            arrayList.add(phone);
+                            arrayList.add(name);
                             arrayAdapter.notifyDataSetChanged();
                         }
                     } else {

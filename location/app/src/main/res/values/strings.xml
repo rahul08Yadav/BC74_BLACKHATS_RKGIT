@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Crime Related Alert</string>
+    <string name="app_name"> Saviour </string>
     <string name="hello_world">Your location</string>
     <string name="send_location">SOS</string>
     <string name="email">Email id</string>

@@ -191,11 +191,12 @@
         android:layout_marginTop="20dp"
         android:id="@+id/hello"
         android:paddingStart="20dp"
+
         android:textColor="@color/white"
         android:textSize="40sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello \nThere!"/>
+        android:text="Hello There!"/>
     <ProgressBar
         android:visibility="invisible"
         android:layout_marginTop="10dp"
@@ -204,14 +205,5 @@
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_marginStart="110dp"
-        android:layout_below="@+id/hello"
-        android:id="@+id/take_photo"
-        android:paddingStart="20dp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Take Photo"/>
+
 </RelativeLayout>

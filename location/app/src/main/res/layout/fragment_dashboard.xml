@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/citty"
+    android:background="#34b7f1"
     android:layout_height="match_parent">
 
 
@@ -92,30 +92,35 @@
         android:layout_marginTop="380dp" />
 
     <GridLayout
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="420dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:columnCount="2"
         android:padding="10dp"
         android:rowCount="3">
 
         <Button
+     android:layout_marginBottom="20dp"
             android:id="@+id/record_video"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:textSize="18sp"
             android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:drawablePadding="5sp"
             android:background="@drawable/custom_button"
-            android:drawableRight="@drawable/video"
+            android:drawableBottom="@drawable/camera"
             android:text="Send Photos"
             android:textAllCaps="false" />
 
 
         <Button
+            android:layout_marginBottom="20dp"
             android:id="@+id/fetch"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -124,11 +129,12 @@
             android:layout_margin="5dp"
             android:textSize="18sp"
             android:background="@drawable/custom_button"
-            android:drawableRight="@drawable/patrol"
-            android:text="Near By\n Police"
+            android:drawableBottom="@drawable/patrol"
+            android:text="Police"
             android:textAllCaps="false" />
 
         <Button
+            android:layout_marginBottom="20dp"
             android:id="@+id/grp_chat"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -136,12 +142,13 @@
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"
-            android:drawableRight="@drawable/grpchat"
+            android:drawableBottom="@drawable/gpchat"
             android:text="Group Chat"
             android:textSize="18sp"
             android:textAllCaps="false" />
 
         <Button
+            android:layout_marginBottom="20dp"
             android:id="@+id/whatsAppBtn"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -149,10 +156,23 @@
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"
-            android:drawableRight="@drawable/help"
-            android:text="Emergency\n Contacts"
-            android:textSize="16sp"
+            android:drawableBottom="@drawable/help1"
+            android:text="Prime Contact"
+            android:textSize="18sp"
             android:textAllCaps="false" />
+        <Button
+            android:id="@+id/SendMessageBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/custom_button"
+            android:drawableBottom="@drawable/chat"
+            android:text="Send Message"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
 
         <Button
             android:id="@+id/callBtn"
@@ -162,23 +182,11 @@
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"
-            android:drawableRight="@drawable/phone"
-            android:text="Call nearest\nContact"
+            android:drawableBottom="@drawable/help"
+            android:text="Emergency Call"
             android:textAllCaps="false"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/SendMessageBtn"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:background="@drawable/custom_button"
-            android:drawableRight="@drawable/send"
-            android:text="Send Message"
-            android:textAllCaps="false"
-            android:textSize="18sp" />
 
 
     </GridLayout>
