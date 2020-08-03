@@ -50,4 +50,4 @@ Foreground folder contains all the files for the app. We have used android studi
 We have made the website using django platform and the folder sih-new contains all the files.
 
 ## 4)web app(for law enforcement)
-
+The Files Facebook.py and LinkedIn.py are used to scrape the Online profile of all peoples and it will be used to get information about the criminal(person) whose photo was taken using the mobile and we can get all the social details of that user in order to fast-track the investigation process for the police personals.
